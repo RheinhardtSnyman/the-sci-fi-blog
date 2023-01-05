@@ -1,0 +1,27 @@
+import { Link } from "react-router-dom";
+
+const BlogList = ({ blogs, title, handleDelete }) => {
+    return (
+        <div className="blog-list">
+            <h2>{title}</h2>
+            {blogs.map((blog) => (
+                <div className="blog-preview" key={blog.id}>
+                    <Link to ={`/blogs/${blog.id}`}>
+                        <h2>{blog.title}</h2>
+                        <p>Written by {blog.author}</p>
+                    </Link>
+                    <a onClick={() => handleDelete(blog.id)} style={{
+                        color: '#f1356d',
+                        fontSize: '12px',
+                        fontWeight: '500',
+                        cursor: 'pointer',
+                        textAlign: 'end',
+                        display: 'block'
+                    }}>remove blog</a>
+                </div>
+            ))}
+        </div>
+    );
+}
+
+export default BlogList;
